@@ -13,7 +13,7 @@ This module includes a corrected version of the `create_product` API endpoint in
 
 ## 📄 File
 
-- `create_product_fixed.py`: Flask route implementation for POST `/api/products`
+- `product_fixed.py`: Flask route implementation for POST `/api/products`
 
 ## 🚀 Technologies
 
