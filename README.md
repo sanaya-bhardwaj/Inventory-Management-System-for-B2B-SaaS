@@ -1,80 +1,29 @@
 # Inventory-Management-System-for-B2B-SaaS
 
-# Part 1: Code Review & Debugging - Product API Fix
+This project contains 3 parts focused on building a robust inventory alert system:
 
-This module includes a corrected version of the `create_product` API endpoint initially written by a previous developer.
+## 🧩 Parts
 
-## ✅ Fixes Implemented
+1. **Product API Fix**  
+   - Refactor and fix a broken product creation endpoint  
+   - [View Part 1](part1_code_review_fix/README.md)
 
-- Added input validation for required fields
-- Enforced SKU uniqueness
-- Used single DB transaction to avoid partial commits
-- Handled decimal precision for price
-- Added proper error handling and response formatting
-- Improved maintainability and security
+2. **Database Design**  
+   - Schema for multi-tenant, multi-warehouse, and bundle-aware inventory system  
+   - [View Part 2](part2_db_design/README.md)
 
-## 📄 File
+3. **Low-Stock Alerts API**  
+   - Full-featured API to return actionable low-stock alerts with sales & supplier context  
+   - [View Part 3](part3_low_stock_alerts/README.md)
 
-- `create_product_fixed.py`: Flask route implementation for POST `/api/products`
+## 🔧 Tech Used
 
-## 🚀 Technologies
-
-- Python
-- Flask
+- Python, Flask
 - SQLAlchemy
+- PostgreSQL
+- REST APIs
 
-# Part 2: Database Design for Inventory System
+## ✍️ Author
 
-This folder contains the schema design for a multi-warehouse, multi-company inventory system with support for bundles and suppliers.
+Sanaya Bhardwaj
 
-## 📦 Key Features
-
-- Products can be stored in multiple warehouses
-- Inventory tracked per product-warehouse pair
-- Bundles can contain multiple products
-- Supplier and sales data supported
-- Inventory history logs all stock changes
-
-## 📄 Files
-
-- `schema.sql`: SQL DDL to create tables
-- `schema_readme.md`: Design assumptions, decisions, and questions
-
-## ❓ Questions Raised
-
-- Should bundles be nestable?
-- How should we handle inventory variants (size/color)?
-- Do we soft-delete entities or archive them?
-
-## 🧱 Technologies
-
-- PostgreSQL syntax (can be adapted to MySQL)
-
-# Part 3: Low-Stock Alert API
-
-This folder includes the implementation of an API endpoint that returns low-stock alerts for products with recent sales activity across all warehouses of a company.
-
-## ✅ Business Rules
-
-- Thresholds vary by product type
-- Only alert on products with recent sales (last 30 days)
-- Product stock calculated per warehouse
-- Supplier info is included for easy reordering
-
-## 🧠 Highlights
-
-- Handles avg. daily sales & stockout prediction
-- Skips inactive products
-- Includes supplier and warehouse metadata
-
-## 📄 Files
-
-- `app.py`: Flask route for `GET /api/companies/<id>/alerts/low-stock`
-- `models.py`: Mocked data models for Products, Inventory, etc.
-- `sample_response.json`: Sample output JSON
-
-## 🧪 Tech Stack
-
-- Python
-- Flask
-- SQLAlchemy
